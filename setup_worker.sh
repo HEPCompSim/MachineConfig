@@ -2,6 +2,9 @@
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 
+sysctl -p  # apply
+systemctl restart network
+
 ### Add local ip address:
 if [ -z "$1" ]
 then

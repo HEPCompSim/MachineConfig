@@ -4,6 +4,7 @@ echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 
 sysctl -p  # apply
+systemctl restart network
 
 # Add ip
 ip addr add 192.168.1.100/24 dev enp4s0 label enp4s0:0
