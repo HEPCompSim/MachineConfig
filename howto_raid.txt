@@ -1,0 +1,17 @@
+# format the disk with ext4
+mkfs.ext4 /dev/XXX
+
+# create raid 0
+mdadm --create /dev/md0 --auto md --level=0 --raid-devices=2 /dev/sda /dev/sdb
+
+# format the raid with ext4
+mkfs.ext4 /dev/md0
+
+# get chunk size:
+mdadm -D /dev/md0 | grep "Chunk Size"
+
+# if 512:
+mkfs.ext4 -b 4096 -E stride=128,stripe-width=256 /dev/md0
+
+# mount
+mount /dev/md0 /local/scratch/condor
