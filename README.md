@@ -14,7 +14,11 @@ The routing ist implemented as SNAT rule in iptables.
 In order to be able to clear the page cache between validation runs to recover a clear machine setup,
 `root` permissions for execution of the `clearPageCache.sh` script must be assigned to the user 
 executing the measurements.
-To enable it execute `setup_sudoers.sh <USER> <PATH_TO>/clearPageCache.sh`.
+Of course, the `clearPageCache.sh` script must first be placed somewhere on the machine.
+To enable it execute 
+```bash
+setup_sudoers.sh <USER> <PATH_TO>/clearPageCache.sh
+```.
 This script can then be called by the user `<USER>` to wipe the page cache of the machine by the user with:
 ```bash
 sudo <PATH_TO>/clearPageCache.sh`
