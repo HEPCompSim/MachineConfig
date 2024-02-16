@@ -1,10 +1,13 @@
 # Deactivate ip v6 in /etc/sysctl.conf on all machines
-echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
-echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
-echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+#echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
+#echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+#echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+sysctl -w net.ipv6.conf.default.disable_ipv6=1
+sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sysctl -w net.ipv4.ip_forward=1
 
 sysctl -p  # apply
-systemctl restart network
+#systemctl restart systemd-networkd
 
 # Add ip
 ip addr add 192.168.1.100/24 dev enp4s0 label enp4s0:0
