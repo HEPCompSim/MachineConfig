@@ -16,9 +16,9 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1
 ip addr add 192.168.1.10$1/24 dev enp4s0 label enp4s0:0
 
 # add default gateway:
-route replace default gw 192.168.1.100 enp4s0
+route add default gw 192.168.1.100 enp4s0
 # remove old default gateway:
-#route del default gw 129.13.101.1 dev enp4s0
+route del default gw 129.13.101.1 dev enp4s0
 
 # mount condor
 #mount /dev/md0 /local/scratch/condor
